@@ -11,14 +11,14 @@ HEADERS = {
 }
 
 STATUSES = [
-    " -- Nhớ em anh không thể nào cai -- ",
-    " -- Ôm tương tư nụ cười của ai đó -- ",
-    " -- Mùa xuân đến bình yên -- ",
-    " -- Dù cho tận thế vẫn yêu em -- ",
-    " -- Liệu rằng ngày mai anh có được tất cả -- ",
-    " -- Em có trở về bên anh -- ",
-    " -- Ừ thì mình đã yêu nhau xong rồi -- ",
-    " -- Từng là một tình yêu đẹp nhất trên đời -- ",
+    "💖 -- Nhớ em anh không thể nào cai -- 💖",
+    "💖 -- Ôm tương tư nụ cười của ai đó -- 💖",
+    "💖 -- Mùa xuân đến bình yên -- 💖",
+    "💖 -- Dù cho tận thế vẫn yêu em -- 💖",
+    "💖 -- Liệu rằng ngày mai anh có được tất cả -- 💖",
+    "💖 -- Em có trở về bên anh -- 💖",
+    "💖 -- Ừ thì mình đã yêu nhau xong rồi -- 💖",
+    "💖 -- Từng là một tình yêu đẹp nhất trên đời -- 💖",
 ]
 
 def change_status():
