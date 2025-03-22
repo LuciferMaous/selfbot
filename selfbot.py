@@ -1,6 +1,9 @@
 import requests
 import time
 import os
+import websocket
+import json
+
 TOKEN = os.getenv("token")
 HEADERS = {
     "Authorization": TOKEN,
@@ -8,34 +11,28 @@ HEADERS = {
 }
 
 STATUSES = [
-    "💗 - Từng ngày đều phải cố để luôn tươi cười -",
-    "💗 - Trở thành một thằng ngáo ngơ -",
-    "💗 - Anh ngáo ngơ vì em mà -",
-    "💗 - Anh cứ đi trên con đường xưa khi ta bên nhau -"
+    " -- Nhớ em anh không thể nào cai -- ",
+    " -- Ôm tương tư nụ cười của ai đó -- ",
+    " -- Mùa xuân đến bình yên -- ",
+    " -- Dù cho tận thế vẫn yêu em -- ",
+    " -- Liệu rằng ngày mai anh có được tất cả -- ",
+    " -- Em có trở về bên anh -- ",
+    " -- Ừ thì mình đã yêu nhau xong rồi -- ",
+    " -- Từng là một tình yêu đẹp nhất trên đời -- ",
 ]
-
-def check_connection():
-    """Kiểm tra xem token có bị mất kết nối không"""
-    ws = websocket.create_connection("wss://gateway.discord.gg/?v=9&encoding=json")
-    ws.send(json.dumps({"op": 2, "d": {"token": TOKEN, "properties": {}}}))
-    response = ws.recv()
-    ws.close()
-    return "ready" in response
 
 def change_status():
     while True:
-        if check_connection():
-            for status in STATUSES:
-                payload = {"custom_status": {"text": status}}
-                response = requests.patch("https://discord.com/api/v9/users/@me/settings", headers=HEADERS, json=payload)
-                if response.status_code == 200:
-                    print(f"✅ Đã đổi trạng thái thành: {status}")
-                else:
-                    print(f"❌ Lỗi: {response.status_code} - {response.text}")
-                time.sleep(10)
-        else:
-            print("⚠️ Mất kết nối! Chờ 10s để thử lại...")
-            time.sleep(3)
+        for status in STATUSES:
+            payload = {"custom_status": {"text": status}}
+            response = requests.patch("https://discord.com/api/v9/users/@me/settings", headers=HEADERS, json=payload)
+            
+            if response.status_code == 200:
+                print(f"✅ Đã đổi trạng thái thành: {status}")
+            else:
+                print(f"❌ Lỗi: {response.status_code} - {response.text}")
+            
+            time.sleep(10)
 
 if __name__ == "__main__":
     change_status()
