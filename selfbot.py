@@ -2,32 +2,43 @@ import requests
 import time
 import os
 TOKEN = os.getenv("token")
-headers = {
+HEADERS = {
     "Authorization": TOKEN,
     "Content-Type": "application/json"
 }
 
-statuses = [
-    "💗 -- Nhớ em anh không thể nào cai --",
-    "💗 -- Em xinh như một thiên thần --",
-    "💗 -- Hình như trong lòng anh đã không còn hình bóng ai ngoài em đâu --",
-    "💗 -- Dù cho tận thế vẫn yêu em luôn yêu em --",
-
+STATUSES = [
+    "💗 - Từng ngày đều phải cố để luôn tươi cười -",
+    "💗 - Trở thành một thằng ngáo ngơ -",
+    "💗 - Anh ngáo ngơ vì em mà -",
+    "💗 - Anh cứ đi trên con đường xưa khi ta bên nhau -"
 ]
 
-while True:
-    for status in statuses:
-        status_data = {"custom_status": {"text": status}}
+def check_connection():
+    """Kiểm tra xem token có bị mất kết nối không"""
+    ws = websocket.create_connection("wss://gateway.discord.gg/?v=9&encoding=json")
+    ws.send(json.dumps({"op": 2, "d": {"token": TOKEN, "properties": {}}}))
+    response = ws.recv()
+    ws.close()
+    return "ready" in response
 
-        response = requests.patch(
-            "https://discord.com/api/v9/users/@me/settings",
-            headers=headers,
-            json=status_data
-        )
-
-        if response.status_code == 200:
-            print(f"✅ Đã đổi trạng thái thành: {status}")
+def change_status():
+    while True:
+        if check_connection():
+            for status in STATUSES:
+                payload = {"custom_status": {"text": status}}
+                response = requests.patch("https://discord.com/api/v9/users/@me/settings", headers=HEADERS, json=payload)
+                if response.status_code == 200:
+                    print(f"✅ Đã đổi trạng thái thành: {status}")
+                else:
+                    print(f"❌ Lỗi: {response.status_code} - {response.text}")
+                time.sleep(10)
         else:
-            print(f"❌ Lỗi: {response.status_code} - {response.text}")
+            print("⚠️ Mất kết nối! Chờ 10s để thử lại...")
+            time.sleep(3)
 
-        time.sleep(3)  # Chờ 10 giây trước khi đổi trạng thái tiếp theo
+if __name__ == "__main__":
+    change_status()
+
+while True:
+    time.sleep(3600)  # Chờ 1 tiếng trước khi tiếp tục
