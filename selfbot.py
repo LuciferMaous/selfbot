@@ -19,6 +19,11 @@ STATUSES = [
     " - Em có trở về bên anh... - ",
     " - Ừ thì mình đã yêu nhau xong rồi... - ",
     " - Từng là một tình yêu đẹp nhất trên đời... - ",
+    " - Và có lẽ giờ này em đã ngủ say... - ",
+    " - Còn anh thì vẫn mang... - ",
+    " - Nỗi nhớ em trong đêm thật dài... - ",
+    " - Đúng là yêu thật rồi... - ",
+    " - Tôi chỉ muốn nói là tôi yêu em... - ",
 ]
 
 def change_status():
