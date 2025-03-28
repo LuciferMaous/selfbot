@@ -11,19 +11,13 @@ HEADERS = {
 }
 
 STATUSES = [
-    " - Nhớ em anh không thể nào cai... - ",
     " - Ôm tương tư nụ cười của ai đó... - ",
+    " - Đúng là yêu thật rồi... - ",
     " - Mùa xuân đến bình yên... - ",
     " - Dù cho tận thế vẫn yêu em... - ",
-    " - Liệu rằng ngày mai anh có được tất cả... - ",
-    " - Em có trở về bên anh... - ",
-    " - Ừ thì mình đã yêu nhau xong rồi... - ",
-    " - Từng là một tình yêu đẹp nhất trên đời... - ",
-    " - Và có lẽ giờ này em đã ngủ say... - ",
-    " - Còn anh thì vẫn mang... - ",
-    " - Nỗi nhớ em trong đêm thật dài... - ",
-    " - Đúng là yêu thật rồi... - ",
-    " - Tôi chỉ muốn nói là tôi yêu em... - ",
+    " - Làm người yêu anh nha em... - ",
+    " - Thề là thấy em giây đầu tiên... - ",
+    " - Anh đã muốn đưa em lên thuyền... - ",
 ]
 
 def change_status():
